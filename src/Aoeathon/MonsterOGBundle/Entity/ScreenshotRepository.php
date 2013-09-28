@@ -33,8 +33,8 @@ class ScreenshotRepository {
 			return null;
 		}
 
-		$screenshot = $this->screenshotMetaStorage->fetch($identifier);
-		$screenshot->setFileInfo($this->screenshotDataStorage->fetch($identifier));
+		$screenshot = $this->screenshotMetaStorage->fetchMeta($identifier);
+		$screenshot->setFileInfo($this->screenshotDataStorage->fetchData($identifier));
 
 		return $screenshot;
 	}
@@ -44,6 +44,7 @@ class ScreenshotRepository {
 	 * @param $screenshotObject Screenshot
 	 */
 	public function persist($identifier, $screenshotObject) {
-		// @TODO
+		$this->screenshotDataStorage->storeData($identifier, $screenshotObject->getFileInfo());
+		$this->screenshotMetaStorage->storeMeta($identifier, $screenshotObject);
 	}
 }

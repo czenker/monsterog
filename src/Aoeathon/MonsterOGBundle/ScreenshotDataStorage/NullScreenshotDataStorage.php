@@ -11,7 +11,7 @@ class NullScreenshotDataStorage implements ScreenshotDataStorageInterface {
 	 * @param $splFileInfo LocalFileInfo
 	 * @return boolean
 	 */
-	public function store($identifier, $splFileInfo) {
+	public function storeData($identifier, $splFileInfo) {
 		return TRUE;
 	}
 
@@ -19,7 +19,7 @@ class NullScreenshotDataStorage implements ScreenshotDataStorageInterface {
 	 * @param $identifier
 	 * @return AbstractFileInfo
 	 */
-	public function fetch($identifier) {
+	public function fetchData($identifier) {
 		return NULL;
 	}
 

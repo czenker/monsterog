@@ -15,13 +15,13 @@ interface ScreenshotMetaStorageInterface {
 	 * @param $screenshotObject Screenshot
 	 * @return boolean
 	 */
-	public function store($identifier, $screenshotObject);
+	public function storeMeta($identifier, $screenshotObject);
 
 	/**
 	 * @param $identifier string
 	 * @return Screenshot
 	 */
-	public function fetch($identifier);
+	public function fetchMeta($identifier);
 
 	/**
 	 * @param $identifier string

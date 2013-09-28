@@ -16,12 +16,12 @@ interface ScreenshotDataStorageInterface {
 	 * @param $splFileInfo LocalFileInfo
 	 * @return boolean
 	 */
-	public function store($identifier, $splFileInfo);
+	public function storeData($identifier, $splFileInfo);
 
 	/**
 	 * @param $identifier
 	 * @return AbstractFileInfo
 	 */
-	public function fetch($identifier);
+	public function fetchData($identifier);
 
 }

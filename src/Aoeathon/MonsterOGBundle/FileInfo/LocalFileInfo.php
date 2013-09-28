@@ -29,4 +29,13 @@ class LocalFileInfo extends AbstractFileInfo {
 	public function getContents() {
 		return file_get_contents($this->absoluteFilePath);
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getAbsoluteFilePath() {
+		return $this->absoluteFilePath;
+	}
+
+
 }

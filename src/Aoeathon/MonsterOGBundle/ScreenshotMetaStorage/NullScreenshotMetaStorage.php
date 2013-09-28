@@ -8,14 +8,14 @@ use Aoeathon\MonsterOGBundle\Entity\Screenshot;
  *
  * @package Aoeathon\MonsterOGBundle\DataStorage
  */
-class NullScreenshotMetaStorage implements  ScreenshotMetaStorageInterface {
+class NullScreenshotMetaStorage implements ScreenshotMetaStorageInterface {
 
 	/**
 	 * @param $identifier string
 	 * @param $screenshotObject Screenshot
 	 * @return boolean
 	 */
-	public function store($identifier, $screenshotObject) {
+	public function storeMeta($identifier, $screenshotObject) {
 		return TRUE;
 	}
 
@@ -23,7 +23,7 @@ class NullScreenshotMetaStorage implements  ScreenshotMetaStorageInterface {
 	 * @param $identifier string
 	 * @return Screenshot
 	 */
-	public function fetch($identifier) {
+	public function fetchMeta($identifier) {
 		return NULL;
 	}
 

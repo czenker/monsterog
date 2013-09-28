@@ -25,12 +25,11 @@ class DefaultController extends Controller {
 		$fileInfo = $screenshot->getFileInfo();
 
 		if($fileInfo instanceof LocalFileInfo) {
-//			$response = new Response($fileInfo->getContents());
-//			$response->headers->set('Content-Type', 'image/png');
-//			return $response;
+			$response = new Response($fileInfo->getContents());
+			$response->headers->set('Content-Type', 'image/png');
+			return $response;
 		} elseif($fileInfo instanceof HttpFileInfo) {
 			// @TODO
-
 		}
 
 		throw new \RuntimeException('fileInfo is of unknown class ' . get_class($fileInfo));
