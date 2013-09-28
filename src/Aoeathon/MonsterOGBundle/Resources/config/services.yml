@@ -1,0 +1,7 @@
+parameters:
+#    ao_eathon_monster_og.example.class: Aoeathon\MonsterOGBundle\Example
+
+services:
+#    ao_eathon_monster_og.example:
+#        class: %ao_eathon_monster_og.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

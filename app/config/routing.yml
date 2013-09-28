@@ -1,0 +1,4 @@
+aoeathon_monster_og:
+    resource: "@AoeathonMonsterOGBundle/Resources/config/routing.yml"
+    prefix:   /
+

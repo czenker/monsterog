@@ -1,0 +1,4 @@
+aoeathon_monster_og_screenshot:
+    pattern:  /
+    defaults:
+        _controller: AoeathonMonsterOGBundle:Default:index
