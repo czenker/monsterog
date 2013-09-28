@@ -1,6 +1,7 @@
 <?php
 
 namespace Aoeathon\ScreenshotBundle\Service;
+use Aoeathon\ScreenshotBundle\Provider\WkhtmltoimageProvider;
 
 /**
  * Class ScreenshotService
@@ -14,14 +15,14 @@ class ScreenshotService {
 	 *
 	 * @var int
 	 */
-	protected $defaultWidth = 400;
+	protected $defaultWidth = 1240;
 
 	/**
 	 * $height of the screenshot to create
 	 *
 	 * @var int
 	 */
-	protected $defaultHeight = 300;
+	protected $defaultHeight = 860;
 
 	/**
 	 * @param int|null $defaultWidth
@@ -45,7 +46,11 @@ class ScreenshotService {
 		$height = $height ?: $this->defaultHeight;
 
 		// @TODO
-
-		return new \SplFileInfo(__DIR__ . '/../Resources/dummyScreenshot.png');
+        $provider = new WkhtmltoimageProvider;
+        $provider
+            ->setHeight($height)
+            ->setWidth($width)
+            ->setUrl($url);
+		return $provider->getScreenshot();
 	}
 }
