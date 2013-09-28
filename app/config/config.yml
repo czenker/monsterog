@@ -36,3 +36,7 @@ doctrine_mongodb:
     document_managers:
         default:
             auto_mapping: true
+
+aoeathon_monster_og:
+    datastorage_service: aoeathon_monster_og.screenshot_data_storage
+    metastorage_service: aoeathon_monster_og.screenshot_meta_storage

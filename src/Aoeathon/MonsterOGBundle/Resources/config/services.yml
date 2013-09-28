@@ -14,7 +14,7 @@ services:
 
     aoeathon_monster_og.screenshot_repository:
         class: %aoeathon_monster_og.screenshot_repository.class%
-        arguments: [@aoeathon_monster_og.screenshot_data_storage, @aoeathon_monster_og.screenshot_meta_storage]
+        # the services to be injected are configured in AoeathonMonsterOGExtension
 
     aoeathon_monster_og.screenshot_service:
         class: %aoeathon_monster_og.screenshot_service.class%

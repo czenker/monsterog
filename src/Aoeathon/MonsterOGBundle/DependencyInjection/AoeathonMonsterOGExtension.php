@@ -4,6 +4,7 @@ namespace Aoeathon\MonsterOGBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -24,5 +25,9 @@ class AoeathonMonsterOGExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $definition = $container->getDefinition('aoeathon_monster_og.screenshot_repository');
+        $definition->addArgument(new Reference($config['datastorage_service']));
+        $definition->addArgument(new Reference($config['metastorage_service']));
     }
 }

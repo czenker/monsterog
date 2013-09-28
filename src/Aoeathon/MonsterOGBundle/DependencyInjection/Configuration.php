@@ -18,12 +18,18 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('ao_eathon_monster_og');
+        $rootNode = $treeBuilder->root('aoeathon_monster_og');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
-
+        $rootNode
+            ->children()
+                ->scalarNode('datastorage_service')
+                    ->isRequired()
+                ->end()
+                ->scalarNode('metastorage_service')
+                    ->isRequired()
+                ->end()
+            ->end()
+        ;
         return $treeBuilder;
     }
 }
