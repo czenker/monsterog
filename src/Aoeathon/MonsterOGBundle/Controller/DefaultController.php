@@ -2,7 +2,9 @@
 
 namespace Aoeathon\MonsterOGBundle\Controller;
 
-use Aoeathon\ScreenshotBundle\Service\ScreenshotService;
+use Aoeathon\MonsterOGBundle\FileInfo\HttpFileInfo;
+use Aoeathon\MonsterOGBundle\FileInfo\LocalFileInfo;
+use Aoeathon\MonsterOGBundle\Service\ScreenshotService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
@@ -18,14 +20,19 @@ class DefaultController extends Controller {
 		// @TODO: validate url
 
 		/** @var ScreenshotService $screenshotService */
-		$screenshotService = $this->get('aoeathon_screenshot.screenshot_service');
+		$screenshotService = $this->get('aoeathon_monster_og.screenshot_service');
+		$screenshot = $screenshotService->getScreenshotByUrl($url);
+		$fileInfo = $screenshot->getFileInfo();
 
-		// @TODO: caching
+		if($fileInfo instanceof LocalFileInfo) {
+			$response = new Response($fileInfo->getContents());
+			$response->headers->set('Content-Type', 'image/png');
+			return $response;
+		} elseif($fileInfo instanceof HttpFileInfo) {
+			// @TODO
 
-		$file = $screenshotService->createPngScreenshotFromUrl($url);
+		}
 
-		$response = new Response(file_get_contents($file->getRealPath()));
-		$response->headers->set('Content-Type', 'image/png');
-		return $response;
+		throw new \RuntimeException('fileInfo is of unknown class ' . get_class($fileInfo));
 	}
 }

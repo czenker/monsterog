@@ -1,4 +1,4 @@
 aoeathon_monster_og_screenshot:
-    pattern:  /
+    pattern:  /screenshot.png
     defaults:
         _controller: AoeathonMonsterOGBundle:Default:index

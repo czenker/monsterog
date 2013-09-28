@@ -1,7 +1,22 @@
 parameters:
-#    ao_eathon_monster_og.example.class: Aoeathon\MonsterOGBundle\Example
+    aoeathon_monster_og.screenshot_data_storage.class: Aoeathon\MonsterOGBundle\ScreenshotDataStorage\NullScreenshotDataStorage
+    aoeathon_monster_og.screenshot_meta_storage.class: Aoeathon\MonsterOGBundle\ScreenshotMetaStorage\NullScreenshotMetaStorage
+    aoeathon_monster_og.screenshot_repository.class: Aoeathon\MonsterOGBundle\Entity\ScreenshotRepository
+    aoeathon_monster_og.screenshot_service.class: Aoeathon\MonsterOGBundle\Service\ScreenshotService
 
 services:
-#    ao_eathon_monster_og.example:
-#        class: %ao_eathon_monster_og.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+
+    aoeathon_monster_og.screenshot_data_storage:
+        class: %aoeathon_monster_og.screenshot_data_storage.class%
+
+    aoeathon_monster_og.screenshot_meta_storage:
+        class: %aoeathon_monster_og.screenshot_meta_storage.class%
+
+    aoeathon_monster_og.screenshot_repository:
+        class: %aoeathon_monster_og.screenshot_repository.class%
+        arguments: [@aoeathon_monster_og.screenshot_data_storage, @aoeathon_monster_og.screenshot_meta_storage]
+
+    aoeathon_monster_og.screenshot_service:
+        class: %aoeathon_monster_og.screenshot_service.class%
+        arguments: [@aoeathon_monster_og.screenshot_repository, @aoeathon_screenshot.screenshot_service]
+
