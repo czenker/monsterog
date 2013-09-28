@@ -1,7 +1,6 @@
 parameters:
-#    ao_eathon_screenshot.example.class: Aoeathon\ScreenshotBundle\Example
+    aoeathon_screenshot.screenshot_service.class: Aoeathon\ScreenshotBundle\Service\ScreenshotService
 
 services:
-#    ao_eathon_screenshot.example:
-#        class: %ao_eathon_screenshot.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    aoeathon_screenshot.screenshot_service:
+        class: %aoeathon_screenshot.screenshot_service.class%
