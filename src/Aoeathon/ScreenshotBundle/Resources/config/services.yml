@@ -2,5 +2,9 @@ parameters:
     aoeathon_screenshot.screenshot_service.class: Aoeathon\ScreenshotBundle\Service\ScreenshotService
 
 services:
+    aoeathon_screenshot.screenshot_provider:
+      class: Aoeathon\ScreenshotBundle\Provider\CutyCaptProvider
     aoeathon_screenshot.screenshot_service:
         class: %aoeathon_screenshot.screenshot_service.class%
+        calls:
+          - [setProvider, ["@aoeathon_screenshot.screenshot_provider"]]
