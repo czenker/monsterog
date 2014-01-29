@@ -2,6 +2,7 @@
 
 namespace Aoeathon\ScreenshotBundle\Service;
 use Aoeathon\ScreenshotBundle\Provider\WkhtmltoimageProvider;
+use Aoeathon\ScreenshotBundle\Provider\CutyCaptProvider;
 
 /**
  * Class ScreenshotService

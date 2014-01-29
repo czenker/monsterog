@@ -27,6 +27,7 @@ class DefaultController extends Controller {
 		if($fileInfo instanceof LocalFileInfo) {
 			$response = new Response($fileInfo->getContents());
 			$response->headers->set('Content-Type', 'image/png');
+			$response->headers->set('Content-Length',strlen($fileInfo->getContents()));
 			return $response;
 		} elseif($fileInfo instanceof HttpFileInfo) {
 			// @TODO

@@ -8,7 +8,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  *
  * @package Aoeathon\ScreenshotBundle\Provider
  */
-class WkhtmltoimageProvider {
+class CutyCaptProvider {
 
     /**
      * @var string
@@ -52,8 +52,9 @@ class WkhtmltoimageProvider {
      * @return \SplFileInfo
      */
     public function getScreenshot(){
-        $fileName = '/tmp/htmltoimg'.rand().'.png';
-        $exec = 'xvfb-run --server-args="-screen 0, '.$this->width.'x'.$this->height.'x24" wkhtmltoimage --use-xserver "'.$this->url.'" '.$fileName;
+        $fileName = '/tmp/cutycapt'.rand().'.png';
+		$resolution          = $this->width."x".$this->height."x24";
+		$exec               = 'xvfb-run --server-args="-screen 0, '.$resolution.'" CutyCapt --url='.$this->url.' --out='.$fileName;
 
         exec($exec, $output);
         if ($output == 1){
