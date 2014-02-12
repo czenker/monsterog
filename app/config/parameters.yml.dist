@@ -3,4 +3,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     accounts:
       www.aoemedia.de:
-        private_key: HZU787878
+        privateKey: sasaDKSD

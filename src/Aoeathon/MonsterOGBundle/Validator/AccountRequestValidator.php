@@ -9,24 +9,6 @@ use Symfony\Component\Validator\Constraint;
 class AccountRequestValidator extends ConstraintValidator {
 
 	/**
-	 * @var array
-	 */
-	protected $accounts = array(
-		'www.aoemedia.de' => array(
-			'privateKey' => 'sasaDKSD',
-			'publicKey' => '162514ebc691ebe06363df71a880d8306f0c2fb5'
-		)
-	);
-
-	/**
-	 * @param string $account
-	 * @param string $privateKey
-	 */
-	public function addAccount($account, $privateKey) {
-		$this->accounts[$account] = array('privateKey' => $privateKey);
-	}
-
-	/**
 	 * @param Request $request
 	 * @param Constraint $constraint
 	 *
@@ -44,7 +26,7 @@ class AccountRequestValidator extends ConstraintValidator {
 			$this->context->addViolation("No image hostname found");
 		}
 
-		$privateKey	= $this->getPrivateKeyForAccount($account);
+		$privateKey	= $constraint->getPrivateKeyForAccount($account);
 		if(!$privateKey) {
 			$this->context->addViolation("No account found: We did now find your account");
 		}
@@ -55,13 +37,5 @@ class AccountRequestValidator extends ConstraintValidator {
 		}
 
 		return $isValidImageHostname;
-	}
-
-	/**
-	 * @param string $account
-	 * @return boolean
-	 */
-	protected function getPrivateKeyForAccount($account) {
-		return isset($this->accounts[$account]['privateKey']) ? $this->accounts[$account]['privateKey'] : false;
 	}
 }

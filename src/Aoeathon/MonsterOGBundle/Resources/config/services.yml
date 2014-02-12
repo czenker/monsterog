@@ -8,6 +8,7 @@ parameters:
     aoeathon_monster_og.screenshot_service.class: Aoeathon\MonsterOGBundle\Service\ScreenshotService
 
     aoeathon_monster_og.request_validator.class: Aoeathon\MonsterOGBundle\Validator\AccountRequestValidator
+    aoeathon_monster_og.request_validator_constraint.class: Aoeathon\MonsterOGBundle\Validator\AccountRequest
 
 services:
 
@@ -31,3 +32,8 @@ services:
 
     aoeathon_monster_og.request_validator:
         class: %aoeathon_monster_og.request_validator.class%
+
+    aoeathon_monster_og.request_validator_constraint:
+        class: %aoeathon_monster_og.request_validator_constraint.class%
+        calls:
+        - [setAccounts, ["%accounts%"]]

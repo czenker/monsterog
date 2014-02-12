@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 class DefaultController extends Controller {
 
 	public function indexAction(Request $request) {
-		$accountRequestConstraint = new AccountRequest();
+		$accountRequestConstraint = $this->get('aoeathon_monster_og.request_validator_constraint');
 		$errorList = $this->get('validator')->validateValue($request,$accountRequestConstraint);
 
 		if (count($errorList) == 0) {
