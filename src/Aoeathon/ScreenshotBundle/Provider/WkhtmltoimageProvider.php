@@ -17,7 +17,8 @@ class WkhtmltoimageProvider extends AbstractProvider{
         $fileName = '/tmp/htmltoimg'.rand().'.png';
         $exec = 'xvfb-run --server-args="-screen 0, '.$this->width.'x'.$this->height.'x24" wkhtmltoimage --use-xserver "'.$this->url.'" '.$fileName;
 
-        exec($exec, $output);
+        exec(escapeshellcmd ( $exec ), $output);
+
         if ($output == 1){
             throw new Exception('cant create image');
         }

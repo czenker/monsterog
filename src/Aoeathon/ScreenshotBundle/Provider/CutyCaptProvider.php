@@ -19,7 +19,7 @@ class CutyCaptProvider extends AbstractProvider{
 		$resolution          = $this->width."x".$this->height."x24";
 		$exec               = 'xvfb-run --server-args="-screen 0, '.$resolution.'" CutyCapt --url='.$this->url.' --out='.$fileName;
 
-        exec($exec, $output);
+        exec(escapeshellcmd ( $exec ), $output);
         if ($output == 1){
             throw new Exception('cant create image');
         }
