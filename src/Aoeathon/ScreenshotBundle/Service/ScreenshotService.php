@@ -1,7 +1,9 @@
 <?php
 
 namespace Aoeathon\ScreenshotBundle\Service;
+use Aoeathon\ScreenshotBundle\Provider\AbstractProvider;
 use Aoeathon\ScreenshotBundle\Provider\WkhtmltoimageProvider;
+use Aoeathon\ScreenshotBundle\Provider\CutyCaptProvider;
 
 /**
  * Class ScreenshotService
@@ -25,12 +27,24 @@ class ScreenshotService {
 	protected $defaultHeight = 860;
 
 	/**
+	 * @var
+	 */
+	protected $provider;
+
+	/**
 	 * @param int|null $defaultWidth
 	 * @param int|null $defaultHeight
 	 */
 	public function __construct($defaultWidth = NULL, $defaultHeight = NULL) {
 		if($defaultHeight) $this->defaultHeight = $defaultHeight;
 		if($defaultWidth)  $this->defaultWidth  = $defaultWidth;
+	}
+
+	/**
+	 * @param AbstractProvider $provider
+	 */
+	public function setProvider(AbstractProvider $provider) {
+		$this->provider = $provider;
 	}
 
 	/**
@@ -45,12 +59,10 @@ class ScreenshotService {
 		$width = $width ?: $this->defaultWidth;
 		$height = $height ?: $this->defaultHeight;
 
-		// @TODO
-        $provider = new WkhtmltoimageProvider;
-        $provider
+     	$this->provider
             ->setHeight($height)
             ->setWidth($width)
             ->setUrl($url);
-		return $provider->getScreenshot();
+		return $this->provider->getScreenshot();
 	}
 }

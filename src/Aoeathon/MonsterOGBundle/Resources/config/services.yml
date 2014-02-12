@@ -7,6 +7,9 @@ parameters:
     aoeathon_monster_og.screenshot_repository.class: Aoeathon\MonsterOGBundle\Entity\ScreenshotRepository
     aoeathon_monster_og.screenshot_service.class: Aoeathon\MonsterOGBundle\Service\ScreenshotService
 
+    aoeathon_monster_og.request_validator.class: Aoeathon\MonsterOGBundle\Validator\AccountRequestValidator
+    aoeathon_monster_og.request_validator_constraint.class: Aoeathon\MonsterOGBundle\Validator\AccountRequest
+
 services:
 
     aoeathon_monster_og.screenshot_data_storage:
@@ -27,3 +30,10 @@ services:
         class: %aoeathon_monster_og.screenshot_service.class%
         arguments: [@aoeathon_monster_og.screenshot_repository, @aoeathon_screenshot.screenshot_service]
 
+    aoeathon_monster_og.request_validator:
+        class: %aoeathon_monster_og.request_validator.class%
+
+    aoeathon_monster_og.request_validator_constraint:
+        class: %aoeathon_monster_og.request_validator_constraint.class%
+        calls:
+        - [setAccounts, ["%accounts%"]]

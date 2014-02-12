@@ -27,16 +27,6 @@ twig:
     strict_variables: %kernel.debug%
 
 # Doctrine Configuration
-doctrine_mongodb:
-    connections:
-        default:
-            server: mongodb://%mongodb_host%:%mongodb_port%
-            options: {}
-    default_database: %mongodb_database%
-    document_managers:
-        default:
-            auto_mapping: true
-
 aoeathon_monster_og:
     datastorage_service: aoeathon_monster_og.screenshot_data_storage
     metastorage_service: aoeathon_monster_og.screenshot_meta_storage
