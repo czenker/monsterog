@@ -1,3 +1,6 @@
 parameters:
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+    accounts:
+      www.aoemedia.de:
+        private_key: HZU787878
